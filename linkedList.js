@@ -76,7 +76,15 @@ class LinkedList {
     for (let i = 0; i < index; i++) {
       temp = temp.next
     }
-    return temp.value
+    return temp
+  }
+  set(index, value) {
+    let pos = this.get(index)
+    if (pos) {
+      pos.value = value
+      return true
+    }
+    return false
   }
 }
 
@@ -86,4 +94,8 @@ myLinkedList.push(30)
 myLinkedList.length
 // myLinkedList.pop()
 myLinkedList.unshift(100)
+
+console.log(myLinkedList)
+console.log(myLinkedList.set(3, 44))
+
 console.log(myLinkedList)
