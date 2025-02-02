@@ -48,9 +48,25 @@ class LinkedList {
       return temp
     }
   }
+  // add in front of list
+  unshift(value) {
+    let newNode = new Node(value)
+    if (!this.head) {
+      this.head = newNode
+      this.tail = newNode
+    } else {
+      newNode.next = this.head
+      this.head.next = newNode
+    }
+    this.length++
+    return this
+  }
 }
 
 let myLinkedList = new LinkedList(10)
 myLinkedList.push(40)
-console.log(myLinkedList.push(30))
-console.log(myLinkedList.length)
+myLinkedList.push(30)
+myLinkedList.length
+// myLinkedList.pop()
+myLinkedList.unshift(100)
+console.log(myLinkedList)
