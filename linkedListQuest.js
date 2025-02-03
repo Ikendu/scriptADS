@@ -11,6 +11,7 @@ class LinkedList {
     this.tail = this.head
     this.length = 1
   }
+  
   getMidValue() {
     let slow = this.head
     let fast = this.head
@@ -19,4 +20,14 @@ class LinkedList {
       fast = fast.next.next
     }
   }
+
+  getAllValues() {
+    let myValues = []
+    while (this.head.next) {
+      myValues.push(this.head.value)
+    }
+  }
 }
+
+const linkedList = new LinkedList(20)
+
