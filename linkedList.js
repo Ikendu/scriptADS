@@ -89,13 +89,38 @@ class LinkedList {
   insert(index, value) {
     if (index < 0 || index >= this.length) return false
     if (index == 0) return this.unshift(value)
-    if (index == this.length) return this.push(value)
+    if (index == this.length - 1) return this.push(value)
     const newNode = new Node(value)
     let pos = this.get(index - 1)
     newNode.next = pos.next
     pos.next = newNode
     this.length++
     return true
+  }
+  remove(index) {
+    if (index < 0 || index >= this.length - 1) return undefined
+    if (index == 0) return this.shift()
+    if (index == this.length - 1) return this.pop()
+    let pos = this.get(index - 1)
+    let temp = pos.next
+    pos.next = temp.next
+    temp.next = null
+    this.length--
+    return temp
+  }
+  reverse() {
+    let temp = this.head
+    this.head = this.tail
+    this.tail = temp
+    let prev = null
+    let next = temp.next
+    for (let i = 0; i < this.length; i++) {
+      next = temp.next
+      temp.next = prev
+      prev = temp
+      temp = next
+    }
+    return this
   }
 }
 
@@ -104,9 +129,12 @@ myLinkedList.push(40)
 myLinkedList.push(30)
 myLinkedList.length
 // myLinkedList.pop()
-myLinkedList.unshift(100)
+myLinkedList.push(100)
 
-console.log(myLinkedList)
-console.log(myLinkedList.set(3, 44))
+// console.log(myLinkedList.set(3, 44))
+// console.log(myLinkedList.insert(2, 20))
+// console.log(myLinkedList.insert(4, 20))
+
+console.log('Rev', myLinkedList.reverse())
 
 console.log(myLinkedList)
