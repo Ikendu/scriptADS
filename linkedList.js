@@ -17,6 +17,7 @@ class LinkedList {
     this.tail = this.head
     this.length = 1
   }
+  
   push(value) {
     const newNode = new Node(value)
     if (!this.head) {
@@ -29,6 +30,7 @@ class LinkedList {
     this.length++
     return this
   }
+
   pop() {
     if (this.head == null) {
       return null
@@ -61,6 +63,7 @@ class LinkedList {
     this.length++
     return this
   }
+
   shift() {
     if (!this.head) return undefined
     let temp = this.head
@@ -70,6 +73,7 @@ class LinkedList {
     if (length == 0) this.tail = null
     return this
   }
+
   get(index) {
     if (index < 0 || index >= this.length) return undefined
     let temp = this.head
@@ -78,6 +82,7 @@ class LinkedList {
     }
     return temp
   }
+
   set(index, value) {
     let pos = this.get(index)
     if (pos) {
@@ -86,6 +91,7 @@ class LinkedList {
     }
     return false
   }
+
   insert(index, value) {
     if (index < 0 || index >= this.length) return false
     if (index == 0) return this.unshift(value)
@@ -97,6 +103,7 @@ class LinkedList {
     this.length++
     return true
   }
+
   remove(index) {
     if (index < 0 || index >= this.length - 1) return undefined
     if (index == 0) return this.shift()
@@ -108,6 +115,7 @@ class LinkedList {
     this.length--
     return temp
   }
+
   reverse() {
     let temp = this.head
     this.head = this.tail
@@ -122,6 +130,19 @@ class LinkedList {
     }
     return this
   }
+
+  getTail() {
+    if (this.tail) return { Tail: this.tail.value }
+    else return { Tail: null }
+  }
+
+  getValues() {
+    let myValues = []
+    while (this.head) {
+      myValues.push(this.head.value)
+      this.head.next
+    }
+  }
 }
 
 let myLinkedList = new LinkedList(10)
@@ -135,6 +156,7 @@ myLinkedList.push(100)
 // console.log(myLinkedList.insert(2, 20))
 // console.log(myLinkedList.insert(4, 20))
 
-console.log('Rev', myLinkedList.reverse())
+// console.log('Rev', myLinkedList.reverse())
 
 console.log(myLinkedList)
+console.log(myLinkedList.getTail())
