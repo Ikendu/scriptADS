@@ -17,7 +17,7 @@ class LinkedList {
     this.tail = this.head
     this.length = 1
   }
-  
+
   push(value) {
     const newNode = new Node(value)
     if (!this.head) {
@@ -34,9 +34,6 @@ class LinkedList {
   pop() {
     if (this.head == null) {
       return null
-    } else if (this.head == this.tail) {
-      this.head = null
-      this.tail = null
     } else {
       let temp = this.head
       let prev = this.head
@@ -47,6 +44,10 @@ class LinkedList {
       this.tail = prev
       this.tail.next = null
       this.length--
+      if (this.length == 0) {
+        this.head = null
+        this.tail = null
+      }
       return temp
     }
   }

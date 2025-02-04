@@ -25,14 +25,25 @@ class LinkedList {
   }
   pop() {
     if (!this.head) return undefined
-    let pre = this.head
+    let prev = this.head
     let temp = this.head
     while (temp.next) {
-      pre = temp
+      prev = temp
       temp = temp.next
     }
-    this.tail = pre
+    this.tail = prev
     this.tail.next = null
+    return temp
+  }
+
+  shift() {
+    if (!this.head) return false
+    let temp = this.head
+    this.head = this.head.next
+    temp.next = null
+    if (this.length == 0) {
+      this.tail = null
+    }
     return temp
   }
 
@@ -52,10 +63,40 @@ class LinkedList {
       myValues.push(this.head.value)
     }
   }
+
+  unshift(value) {
+    const newNode = new Node(value)
+    if (!this.head) {
+      this.head = newNode
+      this.tail = newNode
+    } else {
+      newNode.next = this.head
+      this.head = newNode
+    }
+    this.length++
+    return this
+  }
+  get(index) {
+    if (this.head == null) return undefined
+    if (index < 0 || index >= this.length) return undefined
+    let temp = this.head
+    for (let i = 0; i < index; i++) {
+      temp = temp.next
+    }
+    return temp
+  }
+  set(index, value) {
+    let pos = this.get(index)
+    pos.value = value
+    return this
+  }
 }
 
 const linkedList = new LinkedList(20)
 console.log(linkedList.push(10))
 console.log(linkedList.push(30))
 console.log(linkedList.push(50))
-console.log('Mid Value', linkedList.pop())
+// console.log('Mid Value', linkedList.pop())
+console.log(linkedList.unshift(60))
+console.log(linkedList.get(3))
+console.log(linkedList.set(4, 500))
