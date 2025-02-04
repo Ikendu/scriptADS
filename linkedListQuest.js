@@ -86,9 +86,23 @@ class LinkedList {
     return temp
   }
   set(index, value) {
-    let pos = this.get(index)
-    pos.value = value
+    let posNode = this.get(index)
+    posNode.value = value
     return this
+  }
+
+  insert(index, value) {
+    if (index == 0) return this.unshift(value)
+    if (index == this.length) return this.push(value)
+    if (index < 0 || index > this.length) return false
+
+    let newNode = new Node(value)
+    let posNode = this.get(index - 1)
+    newNode.next = posNode.next
+    posNode.next = newNode
+    this.length++
+
+    return true
   }
 }
 
@@ -100,3 +114,4 @@ console.log(linkedList.push(50))
 console.log(linkedList.unshift(60))
 console.log(linkedList.get(3))
 console.log(linkedList.set(4, 500))
+console.log(linkedList.insert(5, 200))
