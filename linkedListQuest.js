@@ -104,6 +104,35 @@ class LinkedList {
 
     return true
   }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined
+    if (index == 0) return this.shift()
+    if (index == this.length) return this.pop()
+    let posNode = this.get(index)
+    let temp = posNode.next
+    posNode.next = temp.next
+    temp.next = null
+    this.length--
+    return temp
+  }
+
+  reverse() {
+    let temp = this.head
+    this.head = this.tail
+    this.tail = temp
+
+    let prev = null
+    let next = temp.next
+
+    for (let i = 0; i < this.length; i++) {
+      next = temp.next
+      temp.next = prev
+      prev = temp
+      temp = next
+    }
+    return this
+  }
 }
 
 const linkedList = new LinkedList(20)
@@ -115,3 +144,5 @@ console.log(linkedList.unshift(60))
 console.log(linkedList.get(3))
 console.log(linkedList.set(4, 500))
 console.log(linkedList.insert(5, 200))
+// console.log(linkedList.remove(3))
+console.log(linkedList.reverse())
