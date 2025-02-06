@@ -37,22 +37,23 @@ class LinkedList {
       if (fast == slow) {
         return true
       }
-      }
-      
+    }
   }
 
-  checkLoop() {
+  nthFromBack(n) {
     let fast = this.head
     let slow = this.head
-
-    while (fast.next) {
-      fast = fast.next.next
-      slow = slow.next
-      if (fast == slow) {
-        return true
-      }
+    let i = 0
+    while (i < n) {
+      if (fast == null) return false
+      fast = fast.next
+      i++
     }
-    return false
+    while (fast) {
+      slow = slow.next
+      fast = fast.next
+    }
+    return slow.value
   }
 }
 
@@ -60,3 +61,4 @@ let list = new LinkedList(40)
 list.push(50)
 list.push(10)
 console.log(list)
+console.log(list.nthFromBack(5))
