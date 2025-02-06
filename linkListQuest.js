@@ -55,10 +55,41 @@ class LinkedList {
     }
     return slow.value
   }
+
+  partionList(num) {
+    if (this.head == null) return
+    if (this.head.next == null) return this.head
+
+    let holder1 = new Node(0)
+    let holder2 = new Node(0)
+    let pre1 = holder1
+    let pre2 = holder2
+    let curr = this.head
+
+    while (curr) {
+      if (curr.value < num) {
+        pre1.next = curr
+        pre1 = curr
+      } else {
+        pre2.next = curr
+        pre2 = curr
+      }
+      curr = curr.next
+    }
+    pre2.next = null
+    pre1.next = holder2.next
+    this.head = holder1.next
+    return this.head
+  }
 }
 
 let list = new LinkedList(40)
 list.push(50)
 list.push(10)
+list.push(6)
+list.push(3)
+list.push(20)
+list.push(2)
 console.log(list)
-console.log(list.nthFromBack(5))
+// console.log(list.nthFromBack(2))
+console.log(list.partionList(5))
