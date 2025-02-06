@@ -81,6 +81,27 @@ class LinkedList {
     this.head = holder1.next
     return this.head
   }
+
+  // REMOVE DUPLICATE
+  removeDuplicate() {
+  	if(!this.head) return;
+  	let temp = this.head
+  	let prev = null
+  	let mySet = new Set()
+
+
+  	while(temp){
+  		if(mySet.has(temp.value)){
+  			prev.next = temp.next
+  		} else {
+  			mySet.add(temp.value)
+  			prev = temp;
+  		}
+  		temp = temp.next
+  	}
+  	return this.head
+    
+  }
 }
 
 let list = new LinkedList(40)
@@ -92,4 +113,5 @@ list.push(20)
 list.push(2)
 console.log(list)
 // console.log(list.nthFromBack(2))
-console.log(list.partionList(5))
+// console.log(list.partionList(5))
+console.log(list.removeDuplicate())
