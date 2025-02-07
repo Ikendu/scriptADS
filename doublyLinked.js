@@ -68,29 +68,57 @@ class DoublyLinked {
     this.length--
     return temp
   }
-//   get(index) {
-//     if (!this.head) return
-//     let temp = this.head
-//     if (index < this.length / 2) {
-//       for (let i = 0; i < index; i++) {
-//         temp = temp.next
-//       }
-//     } else {
-//       let temp = this.tail
-//       for (let i = this.length - 1; i > 0; i++) {
-//         temp = this.tail.prev
-//       }
+  get(index) {
+    if (!this.head) return
+    if (index < 0 || index > this.length) return
+    let temp = this.head
+    if (index < this.length / 2) {
+      for (let i = 0; i < index; i++) {
+        temp = temp.next
+      }
+    } else {
+      temp = this.tail
+      for (let i = this.length - 1; i > index; i--) {
+        temp = temp.prev
+      }
+    }
+    return temp
+  }
+
+  set(index, value) {
+    if (!this.head) return
+    if (index < 0 || index > this.length) return
+    let temp = this.head
+
+    if (index < this.length / 2) {
+      for (let i = 0; i < index.length; i++) {
+        temp = temp.next
+      }
+    } else {
+      temp = this.tail
+      for (let i = this.length - 1; i < index; i--) {
+        temp = temp.prev
+      }
+    }
+    temp.value = value
+    return temp
+  }
+
+//   insert(index, value) {
+//     posNode = get(index)
+//     if (posNode) {
+//       let temp = posNode.next
 //     }
-//     return temp
 //   }
-// }
+}
 
 let myList = new DoublyLinked(5)
 myList.push(2)
-// myList.push(4)
+myList.push(4)
 // myList.push(8)
 // console.log(myList)
 // console.log(myList.pop())
 // console.log(myList.unshift(7))
 // console.log(myList.shift())
-console.log(myList.get(2))
+// console.log(myList.get(2))
+console.log(myList.set(1, 10))
