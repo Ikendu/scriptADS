@@ -104,12 +104,21 @@ class DoublyLinked {
     return temp
   }
 
-//   insert(index, value) {
-//     posNode = get(index)
-//     if (posNode) {
-//       let temp = posNode.next
-//     }
-//   }
+  insert(index, value) {
+    if (index < 0 || index > this.length) return
+    if (index == 0) return this.unshift(value)
+    if (index == this.length) return this.push(value)
+    let newNode = new Node(value)
+    let before = this.get(index - 1)
+    let after = this.get(index + 1)
+    before.next = newNode
+    newNode.prev = before
+    newNode.next = after
+    after.prev = newNode
+    this.length++
+
+    return this
+  }
 }
 
 let myList = new DoublyLinked(5)
@@ -122,3 +131,4 @@ myList.push(4)
 // console.log(myList.shift())
 // console.log(myList.get(2))
 console.log(myList.set(1, 10))
+console.log(myList.insert(2, 30))
