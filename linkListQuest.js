@@ -84,34 +84,69 @@ class LinkedList {
 
   // REMOVE DUPLICATE
   removeDuplicate() {
-  	if(!this.head) return;
-  	let temp = this.head
-  	let prev = null
-  	let mySet = new Set()
+    if (!this.head) return
+    let temp = this.head
+    let prev = null
+    let mySet = new Set()
 
+    while (temp) {
+      if (mySet.has(temp.value)) {
+        prev.next = temp.next
+      } else {
+        mySet.add(temp.value)
+        prev = temp
+      }
+      temp = temp.next
+    }
+    return this.head
+  }
 
-  	while(temp){
-  		if(mySet.has(temp.value)){
-  			prev.next = temp.next
-  		} else {
-  			mySet.add(temp.value)
-  			prev = temp;
-  		}
-  		temp = temp.next
-  	}
-  	return this.head
-    
+  // BINARY TO DECIMAL
+  binaryToDeciaml() {
+    if (!this.head) return
+    let sum = 0
+    let temp = this.head
+    while (temp) {
+      sum = sum * 2 + temp.value
+      temp = temp.next
+    }
+    return sum
+  }
+
+  reverseBetween(m, n) {
+    if (this.head == null) return
+    let temp = this.head
+    let prev = this.head
+    let length = 0
+    let first
+
+    while (temp.next) {
+      if (length != m) {
+        prev = prev.next
+        temp = temp.next
+        length++
+      } else {
+        while (n != 0) temp = temp.next
+        first = temp
+        first.next = prev
+        prev = first
+        n--
+      }
+    }
+    return this.head
   }
 }
 
-let list = new LinkedList(40)
-list.push(50)
-list.push(10)
-list.push(6)
+let list = new LinkedList(1)
+list.push(0)
+list.push(1)
+list.push(1)
 list.push(3)
 list.push(20)
 list.push(2)
 console.log(list)
 // console.log(list.nthFromBack(2))
 // console.log(list.partionList(5))
-console.log(list.removeDuplicate())
+// console.log(list.removeDuplicate())
+console.log(list.binaryToDeciaml())
+console.log(list.reverseBetween(2, 4))
