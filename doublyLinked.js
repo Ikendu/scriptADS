@@ -105,12 +105,14 @@ class DoublyLinked {
   }
 
   insert(index, value) {
-    if (index < 0 || index > this.length) return
+    if (index < 0 || index > this.length) return false
     if (index == 0) return this.unshift(value)
     if (index == this.length) return this.push(value)
+
     let newNode = new Node(value)
     let before = this.get(index - 1)
-    let after = this.get(index + 1)
+    let after = before.next
+
     before.next = newNode
     newNode.prev = before
     newNode.next = after
@@ -131,4 +133,4 @@ myList.push(4)
 // console.log(myList.shift())
 // console.log(myList.get(2))
 console.log(myList.set(1, 10))
-console.log(myList.insert(2, 30))
+console.log(myList.insert(0, 20))
