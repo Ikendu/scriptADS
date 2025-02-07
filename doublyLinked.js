@@ -121,16 +121,33 @@ class DoublyLinked {
 
     return this
   }
+
+  remove(index) {
+    if (!this.head) return 'empty list'
+    if (index == 0) return this.shift()
+    if (index == this.length) return this.pop()
+    if (index < 0 || index >= this.length) return false
+
+    let temp = this.get(index)
+
+    temp.prev.next = temp.next
+    temp.next.prev = temp.prev
+    temp.next = null
+    temp.prev = null
+
+    return temp
+  }
 }
 
 let myList = new DoublyLinked(5)
 myList.push(2)
 myList.push(4)
-// myList.push(8)
+myList.push(8)
 // console.log(myList)
 // console.log(myList.pop())
 // console.log(myList.unshift(7))
 // console.log(myList.shift())
 // console.log(myList.get(2))
-console.log(myList.set(1, 10))
-console.log(myList.insert(0, 20))
+// console.log(myList.set(1, 10))
+// console.log(myList.insert(0, 20))
+console.log(myList.remove(2))
