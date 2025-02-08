@@ -57,12 +57,30 @@ class DoublyLinkedList {
       curr = curr.prev
     }
   }
+
+  pallindrome() {
+    if (this.length <= 1) return true
+
+    let front = this.head
+    let back = this.tail
+
+    for (let i = 0; i < Math.floor(this.length / 2); i++) {
+      if (front.value !== back.value) return false
+      front = front.next
+      back = back.prev
+    }
+    return true
+  }
 }
 
-let myList = new DoublyLinkedList(10)
-myList.push(5)
-myList.push(20)
-myList.push(7)
+let myList = new DoublyLinkedList('a')
+myList.push('s')
+myList.push('d')
+// myList.push('s')
+myList.push('s')
+myList.push('a')
 // myList.swapFirstLast()
-myList.reverseNode()
+// myList.reverseNode()
+
 console.log(myList)
+console.log(myList.pallindrome())
