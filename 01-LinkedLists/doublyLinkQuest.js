@@ -71,6 +71,20 @@ class DoublyLinkedList {
     }
     return true
   }
+
+  // swapTwo() {
+  //   if (!this.head) return undefined
+  //   let temp = this.head
+  //   let after = temp.next
+
+  //   while (temp) {
+  //     let holder = temp
+  //     temp = after
+  //     after = holder
+  //     temp = temp.next.next
+  //   }
+  //   return this
+  // }
 }
 
 let myList = new DoublyLinkedList('a')
@@ -82,5 +96,6 @@ myList.push('a')
 // myList.swapFirstLast()
 // myList.reverseNode()
 
-console.log(myList)
-console.log(myList.pallindrome())
+// console.log(myList)
+// console.log(myList.pallindrome())
+console.log(myList.swapTwo())
