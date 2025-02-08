@@ -33,6 +33,8 @@ class Stack {
 
     let temp = this.top
     this.top = this.top.next
+    temp.next = null
+    this.length--
 
     return temp
   }
@@ -43,4 +45,5 @@ const myStack = new Stack(10)
 myStack.unshift(20)
 myStack.unshift(7)
 myStack.unshift(9)
-console.log(myStack)
+// console.log(myStack)
+console.log(myStack.shift())
