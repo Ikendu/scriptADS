@@ -125,7 +125,7 @@ class DoublyLinked {
   remove(index) {
     if (!this.head) return 'empty list'
     if (index == 0) return this.shift()
-    if (index == this.length) return this.pop()
+    if (index == this.length - 1) return this.pop()
     if (index < 0 || index >= this.length) return false
 
     let temp = this.get(index)
@@ -134,6 +134,7 @@ class DoublyLinked {
     temp.next.prev = temp.prev
     temp.next = null
     temp.prev = null
+    this.length--
 
     return temp
   }
