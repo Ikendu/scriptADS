@@ -45,3 +45,22 @@ function reverseStr(str) {
 }
 
 console.log(reverseStr('hello'))
+
+function isBalanced(str) {
+  str = [...str]
+  let newPar = ''
+  let opo = ''
+
+  for (let i of str) {
+    if (i == '(' || i == '{' || i == '[') {
+      newPar += i
+    } else {
+      opo += i
+    }
+  }
+  console.log(newPar)
+  console.log(opo)
+  return newPar.length == opo.length
+}
+
+console.log(isBalanced('{{{}}}{}[]{[}]'))
