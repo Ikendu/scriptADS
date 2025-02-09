@@ -10,7 +10,7 @@ class Queue {
     let newNode = new Node(value)
     this.first = newNode
     this.last = newNode
-    this.length++
+    this.length = 1
   }
 
   enqueue(value) {
@@ -27,11 +27,16 @@ class Queue {
   }
 
   dequeue() {
-    if (!this.top) return undefined
-    let temp = this.top
+    if (!this.first) return undefined
+    let temp = this.first
 
-    this.top = this.top.next
-    temp.next = null
+    if (!this.first.next) {
+      this.first = null
+      this.last = null
+    } else {
+      this.first = this.first.next
+      temp.next = null
+    }
     this.length--
 
     return temp
@@ -41,4 +46,5 @@ class Queue {
 let myQueue = new Queue(1)
 myQueue.enqueue(3)
 myQueue.enqueue(5)
+console.log(myQueue.dequeue())
 console.log(myQueue)
