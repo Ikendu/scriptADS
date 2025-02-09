@@ -1,9 +1,34 @@
 class Stack {
   constructor() {
     this.stackList = []
+    this.length = 0
   }
   push(value) {
     this.stackList.push(value)
-    this.length = 1
+    this.length++
+    return this.stack
+  }
+  remove() {
+    this.stackList.pop()
+    this.length--
+  }
+  peek() {
+    return this.stackList[this.length - 1]
+  }
+  size() {
+    return this.stackList.length
+  }
+  isEmpty() {
+    return this.stackList.length - 1 === 0
   }
 }
+
+let myStack = new Stack(5)
+myStack.push(1)
+myStack.push(3)
+myStack.push(5)
+// myStack.remove()
+console.log(myStack.peek())
+console.log(myStack)
+console.log(myStack.size())
+console.log(myStack.isEmpty())
