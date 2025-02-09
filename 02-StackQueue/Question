@@ -9,6 +9,7 @@ class Stack {
     return this.stack
   }
   remove() {
+    if (this.isEmpty) return null
     this.stackList.pop()
     this.length--
   }
@@ -32,3 +33,15 @@ console.log(myStack.peek())
 console.log(myStack)
 console.log(myStack.size())
 console.log(myStack.isEmpty())
+
+function reverseStr(str) {
+  let newArr = []
+  let char = [...str]
+
+  for (let i = 0; i < str.length; i++) {
+    newArr.push(char.pop())
+  }
+  return newArr.join('')
+}
+
+console.log(reverseStr('hello'))
