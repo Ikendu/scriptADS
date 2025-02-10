@@ -70,9 +70,11 @@ function sortArr(arr) {
 
   while (arr.length > 0) {
     let temp = arr.pop()
+
     while (newArr.length > 0 && newArr[newArr.length - 1] > temp) {
       arr.push(newArr.pop())
     }
+
     newArr.push(temp)
   }
 
