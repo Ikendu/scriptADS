@@ -34,3 +34,24 @@ function findMapDup(arr) {
 }
 
 console.log(findMapDup([3, 5, 6, 3, 6, 4]))
+
+// Find non-Reapting character using {}
+function findNonRepeating(str) {
+  let obj = {}
+
+  for (let cha of str) {
+    if (obj[cha]) obj[cha]++
+    else obj[cha] = 1
+  }
+
+  console.log(obj)
+
+  for (let cha in obj) {
+    if (obj[cha] < 2) {
+      return cha
+    }
+  }
+  return result
+}
+
+findNonRepeating('aasshttk')
