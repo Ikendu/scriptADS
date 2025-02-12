@@ -54,3 +54,20 @@ function findNonRepeating(str) {
 }
 
 console.log(findNonRepeating('aasshttk'))
+
+// Find Non-Repeating characters Using map
+function nonRepeatMap(str) {
+  let myMap = new Map()
+  let single = []
+  for (let char of str) {
+    myMap.set(char, (myMap.get(char) || 0) + 1)
+  }
+  console.log(myMap)
+
+  for (let char of myMap) {
+    if (char[1] == 1) single.push(char[0])
+  }
+  return single
+}
+
+console.log(nonRepeatMap('sskkfffyjjsa'))
