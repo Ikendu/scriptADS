@@ -71,3 +71,44 @@ function nonRepeatMap(str) {
 }
 
 console.log(nonRepeatMap('sskkfffyjjsa'))
+
+function anagramGroup(arr) {
+  let mymap = new Map()
+
+  for (let word of arr) {
+    let sorted = word.split('').sort().join('')
+
+    if (mymap.has(sorted)) {
+      mymap.get(sorted).push(word)
+    } else {
+      mymap.set(sorted, [word])
+    }
+  }
+  let result = Array.from(mymap.values())
+  return result
+}
+console.log(
+  anagramGroup(['love', 'vole', 'elvo', 'money', 'nomey', 'car', 'rac', 'arc', 'rich', 'chir'])
+)
+
+// anagram solution with {}
+function anagramObj(arr) {
+  let obj = {}
+
+  for (let word of arr) {
+    let sorted = word.split('').sort().join('')
+
+    if (obj[sorted]) {
+      obj[sorted].push(word)
+    } else {
+      obj[sorted] = [word]
+    }
+  }
+  let result = Object.values(obj)
+  return result
+}
+
+console.log(
+  'OBJ',
+  anagramObj(['love', 'vole', 'elvo', 'money', 'nomey', 'car', 'rac', 'arc', 'rich', 'chir'])
+)
