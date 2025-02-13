@@ -112,3 +112,23 @@ console.log(
   'OBJ',
   anagramObj(['love', 'vole', 'elvo', 'money', 'nomey', 'car', 'rac', 'arc', 'rich', 'chir'])
 )
+
+function twoSum(arr, num) {
+  let obj = {}
+
+  for (let i = 0; i < arr.length; i++) {
+    let sub = num - arr[i]
+    obj[i] = [arr[i], sub]
+  }
+  for (let i in obj) {
+    if (obj[i][0] + obj[i][1] == num) {
+      let index = arr.indexOf(obj[i][1])
+      i = Number(i)
+      if (index !== i && index > -1) return [i, index]
+    }
+  }
+  return []
+}
+
+console.log(twoSum([2, 7, 11, 15], 9))
+console.log(twoSum([3, 2, 4, 3, 2, 5], 7))
