@@ -113,6 +113,7 @@ console.log(
   anagramObj(['love', 'vole', 'elvo', 'money', 'nomey', 'car', 'rac', 'arc', 'rich', 'chir'])
 )
 
+// Two Sums
 function twoSum(arr, num) {
   let obj = {}
 
@@ -130,5 +131,19 @@ function twoSum(arr, num) {
   return []
 }
 
-console.log(twoSum([2, 7, 11, 15], 9))
-console.log(twoSum([3, 2, 4, 3, 2, 5], 7))
+// Better Two Sums in one loop
+function twoSums(arr, num) {
+  let obj = {}
+
+  for (let i = 0; i < arr.length; i++) {
+    let comp = num - arr[i]
+    if (obj[comp]) {
+      return [Number(obj[comp]), i]
+    } else {
+      obj[arr[i]] = i.toString()
+    }
+  }
+  return []
+}
+console.log(twoSums([2, 7, 11, 15], 9))
+console.log(twoSums([3, 2, 4, 3, 2, 5], 7))
