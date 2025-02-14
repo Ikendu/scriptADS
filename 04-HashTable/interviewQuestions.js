@@ -200,3 +200,5 @@ function sliderSum(arr, num) {
 console.log(sliderSum([1, 4, 20, 3, 10, 5], 33))
 
 console.log(sliderSum([2, 5, 1, 5, 7, 20, 3, 15, 10, 3], 45))
+
+
