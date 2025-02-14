@@ -137,13 +137,66 @@ function twoSums(arr, num) {
 
   for (let i = 0; i < arr.length; i++) {
     let comp = num - arr[i]
-    if (obj[comp]) {
-      return [Number(obj[comp]), i]
+    if (obj[comp]) return [Number(obj[comp]), i]
+    else obj[arr[i]] = i.toString()
+  }
+  return []
+}
+// console.log(twoSums([2, 7, 11, 15], 9))
+// console.log(twoSums([3, 2, 4, 3, 2, 5], 7))
+
+// Tow Sum using map function
+function twoSumss(arr, num) {
+  let hash = new Map()
+
+  for (let i = 0; i < arr.length; i++) {
+    let comp = num - arr[i]
+    if (hash.has(comp)) return [hash.get(comp), i]
+    else hash.set(arr[i], i)
+  }
+  return []
+}
+// console.log(twoSumss([2, 7, 11, 15], 9))
+// console.log(twoSumss([3, 2, 4, 3, 2, 5], 7))
+
+// Select the starting and ending index for a givien sum
+function slideSum(arr, num) {
+  let hash = new Map()
+  let sum = 0
+
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i]
+    let diff = sum - num
+    if (hash.has(diff)) {
+      return [hash.get(diff) + 1, i]
     } else {
-      obj[arr[i]] = i.toString()
+      hash.set(sum, i)
     }
   }
   return []
 }
-console.log(twoSums([2, 7, 11, 15], 9))
-console.log(twoSums([3, 2, 4, 3, 2, 5], 7))
+
+console.log(slideSum([1, 4, 20, 3, 10, 5], 33))
+
+console.log(slideSum([2, 5, 1, 5, 7, 20, 3, 15, 10, 3], 45))
+
+// Slider Sum with obj
+function sliderSum(arr, num) {
+  let obj = {}
+  let sum = 0
+
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i]
+
+    if (obj[sum - num]) {
+      return [obj[sum - num] + 1, i]
+    } else {
+      obj[sum] = i
+    }
+  }
+  return []
+}
+
+console.log(sliderSum([1, 4, 20, 3, 10, 5], 33))
+
+console.log(sliderSum([2, 5, 1, 5, 7, 20, 3, 15, 10, 3], 45))
