@@ -25,3 +25,22 @@ function uniqueElement(str) {
     }
   }
 }
+
+function findPairs(arr1, arr2, num) {
+  let obj = {}
+  let result = []
+
+  for (let i = 0; i < arr1.length; i++) {
+    obj[num - arr1[i]] = arr1[i]
+  }
+
+  for (let i = 0; i < arr2.length; i++) {
+    if (obj[arr2[i]]) {
+      result.push([obj[arr2[i]], arr2[i]])
+    }
+  }
+
+  return result
+}
+
+console.log(findPairs([1, 2, 3], [4, 5, 6], 7))
