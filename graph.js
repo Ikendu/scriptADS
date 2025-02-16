@@ -34,6 +34,15 @@ class Graph {
       return false
     }
   }
+
+  removeVertex(v) {
+    while (this.obj[v].length) {
+      let ed = this.obj[v].pop()
+      let idx = this.obj[ed].indexOf(v)
+      this.obj[ed].splice(idx, 1)
+    }
+    delete this.obj[v]
+  }
 }
 
 let mygraph = new Graph()
@@ -42,6 +51,9 @@ mygraph.addVertice('B')
 mygraph.addVertice('C')
 mygraph.addEdge('A', 'B')
 mygraph.addEdge('A', 'B')
+mygraph.addEdge('A', 'C')
+mygraph.addEdge('C', 'B')
 // mygraph.removeEdge('A', 'B')
+console.log(mygraph.removeVertex('C'))
 // console.log(mygraph.addVertice('C'))
 console.log(mygraph)
