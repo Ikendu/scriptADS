@@ -47,22 +47,18 @@ console.log(findPairs([1, 2, 3], [4, 5, 6], 7))
 
 function longestConsecutiveString(arr) {
   let mySet = new Set(arr)
-  let totalSum = 0
+  let sum = 0
 
   for (let num of mySet) {
-    // if (!mySet.has(num - 1)) {
     let currNum = num
-    let sum = 1
+    let currSum = 1
 
     while (mySet.has(currNum + 1)) {
       currNum++
-      sum++
+      currSum++
     }
-    totalSum = Math.max(sum, totalSum)
-    // }
+    sum = Math.max(sum, currSum)
   }
-  console.log(mySet)
-
-  return totalSum
+  return sum
 }
-console.log(longestConsecutiveString([9, 1, 3, 10, 10, 2, 20, 3, 21]))
+console.log(longestConsecutiveString([9, 1, 3, 10, 10, 2, 11, 12, 20, 3, 21]))
