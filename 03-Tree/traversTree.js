@@ -37,6 +37,22 @@ class BST {
       }
     }
   }
+  breadthFirst() {
+    if (!this.root) return undefined
+    let queue = []
+    let result = []
+    let currNode = this.root
+
+    queue.push(currNode)
+
+    while (queue.length) {
+      currNode = queue.shift()
+      result.push(currNode.value)
+      if (currNode.left) queue.push(currNode.left)
+      if (currNode.right) queue.push(currNode.right)
+    }
+    return result
+  }
 }
 
 let myTree = new BST()
@@ -47,3 +63,4 @@ myTree.addNode(70)
 myTree.addNode(65)
 
 console.log(myTree)
+console.log(myTree.breadthFirst())
