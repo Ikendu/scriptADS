@@ -53,6 +53,16 @@ class BST {
     }
     return result
   }
+  depthFirstPreOrder() {
+    let result = []
+    function traverse(currNode) {
+      result.push(currNode.value)
+      if (currNode.left) traverse(currNode.left)
+      if (currNode.right) traverse(currNode.right)
+    }
+    traverse(this.root)
+    return result
+  }
 }
 
 let myTree = new BST()
@@ -61,6 +71,9 @@ myTree.addNode(40)
 myTree.addNode(10)
 myTree.addNode(70)
 myTree.addNode(65)
+myTree.addNode(45)
+myTree.addNode(75)
 
 console.log(myTree)
 console.log(myTree.breadthFirst())
+console.log(myTree.depthFirstPreOrder())
