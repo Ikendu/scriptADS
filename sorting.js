@@ -31,9 +31,12 @@ function selection(array) {
 
 console.log(selection([9, 3, 6, 2, 8, 1, 4]))
 
+// Insertion Sort
+
 function insertion(array) {
+  let temp
   for (let i = 1; i < array.length; i++) {
-    let temp = array[i]
+    temp = array[i]
     for (var j = i - 1; array[j] > temp; j--) {
       array[j + 1] = array[j]
     }
@@ -43,3 +46,22 @@ function insertion(array) {
 }
 
 console.log(insertion([9, 3, 6, 2, 8, 1, 4]))
+
+function insertion2(array) {
+  let temp
+
+  for (let i = 1; i < array.length; i++) {
+    temp = array[i]
+    let j = i - 1
+
+    while (array[j] > temp) {
+      array[j + 1] = array[j]
+      j--
+    }
+    array[j + 1] = temp
+  }
+
+  return array
+}
+
+console.log(insertion2([9, 3, 6, 2, 8, 1, 4]))
