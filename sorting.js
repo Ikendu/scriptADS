@@ -30,3 +30,16 @@ function selection(array) {
 }
 
 console.log(selection([9, 3, 6, 2, 8, 1, 4]))
+
+function insertion(array) {
+  for (let i = 1; i < array.length; i++) {
+    let temp = array[i]
+    for (var j = i - 1; array[j] > temp; j--) {
+      array[j + 1] = array[j]
+    }
+    array[j + 1] = temp
+  }
+  return array
+}
+
+console.log(insertion([9, 3, 6, 2, 8, 1, 4]))
