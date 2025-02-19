@@ -87,6 +87,8 @@ class BST {
       result.push(currNode.value)
       if (currNode.right) traverse(currNode.right)
     }
+      traverse(this.root)
+      return result
   }
 }
 
