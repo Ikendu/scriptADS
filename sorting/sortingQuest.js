@@ -28,8 +28,51 @@ class LinkedList {
     return this
   }
 
-    sortList() {
-      
+  sortListBubble() {
+    if (this.length < 2) return this
+
+    let temp = this.head
+
+    while (temp.next) {
+      let currentNode = temp
+      let nextNode = currentNode.next
+
+      while (nextNode) {
+        if (currentNode.value > nextNode.value) {
+          let holder = currentNode.value
+          currentNode.value = nextNode.value
+          nextNode.value = holder
+        }
+        nextNode = nextNode.next
+      }
+      temp = temp.next
+    }
+    return this
+  }
+
+  sortListSelect() {
+    if (this.length < 2) return this
+
+    let curr = this.head
+
+    while (curr.next) {
+      let smallest = curr
+      let nextNode = smallest.next
+
+      while (nextNode) {
+        if (smallest.value > nextNode.value) {
+          smallest = nextNode
+        }
+        nextNode = nextNode.next
+      }
+      if (smallest !== curr) {
+        let holder = smallest.value
+        smallest.value = curr.value
+        curr.value = holder
+      }
+      curr = curr.next
+    }
+    return this
   }
 }
 
@@ -38,5 +81,5 @@ myList.addNode(20)
 myList.addNode(30)
 myList.addNode(10)
 myList.addNode(40)
-myList.sortList()
+myList.sortListSelect()
 console.log(myList)
