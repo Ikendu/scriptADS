@@ -74,6 +74,9 @@ class LinkedList {
     }
     return this
   }
+
+  // Sorting a linked list with insertion-sort
+  sortListInsert() {}
 }
 
 let myList = new LinkedList(50)
