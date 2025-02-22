@@ -35,4 +35,45 @@ function mergeSort(arr) {
   return merge(mergeSort(left), mergeSort(right))
 }
 
-console.log(mergeSort([30, 3, 6, 10, 2, 20, 25]))
+// console.log(mergeSort([30, 3, 6, 10, 2, 20, 25]))
+
+// MergeSort
+// Questions
+// Merge two sorted linked Lists
+// .
+// .
+
+// Create the Node Class
+class Node {
+  constructor(value) {
+    this.value = value
+    this.next = null
+  }
+}
+
+// Create The LinkedList Class
+class LinkedList {
+  constructor(value) {
+    let newNode = new Node(value)
+    this.head = newNode
+    this.length = 1
+  }
+
+  addNode(value) {
+    let newNode = new Node(value)
+    if (!this.head) {
+      this.head = newNode
+      return this
+    } else {
+      let curr = this.head
+      curr.next = newNode
+      this.length++
+    }
+  }
+}
+
+let myList = new LinkedList(13)
+myList.addNode(30)
+myList.addNode(40)
+myList.addNode(44)
+console.log(myList)
