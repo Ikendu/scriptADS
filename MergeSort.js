@@ -76,24 +76,49 @@ class LinkedList {
     return this
   }
 
-  merge(otherList) {
-    let newList = new Node(0)
-    let otherHead = otherList.head
-    let myList = this.head
-    let combined = newList
+  // merge(otherList) {
+  //   let newList = new Node(0)
+  //   let otherHead = otherList.head
+  //   let myList = this.head
+  //   let combined = newList
 
-    while (myList && otherHead) {
-      if (myList.value < otherHead.value) {
-        combined.next = myList
-        myList = myList.next
+  //   while (myList && otherHead) {
+  //     if (myList.value < otherHead.value) {
+  //       combined.next = myList
+  //       myList = myList.next
+  //     } else {
+  //       combined.next = otherHead
+  //       otherHead = otherHead.next
+  //     }
+  //     combined = combined.next
+  //   }
+  //   if (myList) {
+  //     combined.next = myList
+  //   } else {
+  //     combined.next = otherHead
+  //   }
+  //   this.head = newList.next
+  //   this.length += otherList.length
+  // }
+
+  merges(otherList) {
+    let newList = { value: 0, next: null }
+    let combined = newList
+    let otherHead = otherList.head
+    let curr = this.head
+
+    while (curr && otherHead) {
+      if (curr.value < otherHead.value) {
+        combined.next = curr
+        curr = curr.next
       } else {
         combined.next = otherHead
         otherHead = otherHead.next
       }
       combined = combined.next
     }
-    if (myList) {
-      combined.next = myList
+    if (curr) {
+      combined.next = curr
     } else {
       combined.next = otherHead
     }
@@ -116,5 +141,5 @@ myList.addNode(44)
 aList.addNode(15)
 aList.addNode(20)
 aList.addNode(50)
-myList.merge(aList)
+myList.merges(aList)
 console.log(myList)
