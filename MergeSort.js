@@ -148,7 +148,18 @@ function merge(list1, list2) {
   } else {
     combined.next = head2
   }
+  let length = list1.length + list2.length
+  console.log({ length })
   return newList.next
+}
+
+let objList1 = {
+  head: { value: 12, next: { value: 20, next: { value: 51, next: null } } },
+  length: 4,
+}
+let objList2 = {
+  head: { value: 15, next: { value: 21, next: { value: 55, next: null } } },
+  length: 4,
 }
 
 let myList = new LinkedList(13)
@@ -159,16 +170,7 @@ myList.addNode(44)
 aList.addNode(15)
 aList.addNode(20)
 aList.addNode(50)
-myList.merges(aList)
+myList.merges(objList1)
 console.log(myList)
-
-let objList1 = {
-  head: { value: 12, next: { value: 20, next: { value: 51, next: null } } },
-  lenght: 4,
-}
-let objList2 = {
-  head: { value: 15, next: { value: 21, next: { value: 55, next: null } } },
-  lenght: 4,
-}
 
 console.log(merge(objList1, objList2))
