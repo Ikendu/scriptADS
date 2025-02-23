@@ -127,11 +127,29 @@ class LinkedList {
   }
 }
 
-// objList = {
-//   value: 10,
-//   next: { value: 12, next: { value: 20, next: { value: 51, next: null } } },
-//   lenght: 4,
-// }
+function merge(list1, list2) {
+  let head1 = list1.head
+  let head2 = list2.head
+  let newList = { value: 0, next: null }
+  let combined = newList
+
+  while (head1 && head2) {
+    if (head1.value < head2.value) {
+      combined.next = head1
+      head1 = head1.next
+    } else {
+      combined.next = head2
+      head2 = head2.next
+    }
+    combined = combined.next
+  }
+  if (head1) {
+    combined.next = head1
+  } else {
+    combined.next = head2
+  }
+  return newList.next
+}
 
 let myList = new LinkedList(13)
 let aList = new LinkedList(5)
@@ -143,3 +161,14 @@ aList.addNode(20)
 aList.addNode(50)
 myList.merges(aList)
 console.log(myList)
+
+let objList1 = {
+  head: { value: 12, next: { value: 20, next: { value: 51, next: null } } },
+  lenght: 4,
+}
+let objList2 = {
+  head: { value: 15, next: { value: 21, next: { value: 55, next: null } } },
+  lenght: 4,
+}
+
+console.log(merge(objList1, objList2))
