@@ -63,17 +63,58 @@ class LinkedList {
     let newNode = new Node(value)
     if (!this.head) {
       this.head = newNode
+      this.length = 1
       return this
     } else {
       let curr = this.head
+      while (curr.next) {
+        curr = curr.next
+      }
       curr.next = newNode
       this.length++
     }
+    return this
+  }
+
+  merge(otherList) {
+    let newList = new Node(0)
+    let otherHead = otherList.head
+    let myList = this.head
+    let combined = newList
+
+    while (myList && otherHead) {
+      if (myList.value < otherHead.value) {
+        combined.next = myList
+        myList = myList.next
+      } else {
+        combined.next = otherHead
+        otherHead = otherHead.next
+      }
+      combined = combined.next
+    }
+    if (myList) {
+      combined.next = myList
+    } else {
+      combined.next = otherHead
+    }
+    this.head = newList.next
+    this.length += otherList.length
   }
 }
 
+// objList = {
+//   value: 10,
+//   next: { value: 12, next: { value: 20, next: { value: 51, next: null } } },
+//   lenght: 4,
+// }
+
 let myList = new LinkedList(13)
+let aList = new LinkedList(5)
 myList.addNode(30)
 myList.addNode(40)
 myList.addNode(44)
+aList.addNode(15)
+aList.addNode(20)
+aList.addNode(50)
+myList.merge(aList)
 console.log(myList)
