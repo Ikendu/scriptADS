@@ -13,7 +13,9 @@ function Queue() {
   this.peek = function () {
     return this.store[0]
   }
-  this.items = function () {}
+  this.items = function () {
+    return this.store
+  }
 }
 
 // let myQueue = new Queue()
@@ -28,8 +30,9 @@ function PriorityQueue() {
   this.store = []
 
   this.enqueue = function (element) {
-    if (!this.store.length) {
+    if (this.store.length == 0) {
       this.store.push(element)
+      return
     }
     let checker = 0
 
@@ -37,12 +40,18 @@ function PriorityQueue() {
       if (element[1] < this.store[i][1]) {
         this.store.splice(i, 0, element)
         checker = 1
+        break
       }
     }
     if (checker == 0) {
       this.store.push(element)
     }
-    }
-    
-    
+  }
 }
+
+let pq = new PriorityQueue()
+pq.enqueue(['a', 2])
+pq.enqueue(['b', 3])
+pq.enqueue(['c', 1])
+pq.enqueue(['d', 4])
+console.log(pq.store)
