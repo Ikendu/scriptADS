@@ -63,6 +63,21 @@ class BinaryTree {
       }
     }
   }
+  findMax() {
+    let temp = this.root
+    while (temp.left) {
+      temp = temp.left
+    }
+    return temp.value
+  }
+
+  findMin() {
+    let temp = this.root
+    while (temp.right) {
+      temp = temp.right
+    }
+    return temp.value
+  }
 }
 
 let myTree = new BinaryTree()
@@ -75,6 +90,8 @@ myTree.addNode(35)
 myTree.addNode(55)
 myTree.addNode(50)
 console.log(myTree)
+console.log(myTree.findMax())
+console.log(myTree.findMin())
 let aTree = new BinaryTree()
 aTree.addMoreNode(100)
 aTree.addMoreNode(50)
@@ -84,3 +101,5 @@ aTree.addMoreNode(140)
 aTree.addMoreNode(160)
 aTree.addMoreNode(40)
 console.log(aTree)
+console.log(aTree.findMax())
+console.log(aTree.findMin())
