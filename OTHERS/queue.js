@@ -30,7 +30,7 @@ function PriorityQueue() {
   this.store = []
 
   this.enqueue = function (element) {
-    if (this.store.length == 0) {
+    if (!this.store.length) {
       this.store.push(element)
       return
     }
@@ -46,6 +46,14 @@ function PriorityQueue() {
     if (checker == 0) {
       this.store.push(element)
     }
+  }
+  this.dequeue = function () {
+    let value = this.store.shift()
+    return value[0]
+  }
+
+  this.isEmpty = function () {
+    return this.store.length === 0
   }
 }
 
