@@ -78,6 +78,23 @@ class BinaryTree {
     }
     return temp.value
   }
+
+  isPresent(value) {
+    let curr = this.root
+
+    while (curr) {
+      if (value < curr.value) {
+        curr = curr.left
+      } else if (value > curr.value) {
+        curr = curr.right
+      } else if (value == curr.value) {
+        return true
+      }
+    }
+    return false
+  }
+
+  
 }
 
 let myTree = new BinaryTree()
@@ -92,14 +109,15 @@ myTree.addNode(50)
 console.log(myTree)
 console.log(myTree.findMax())
 console.log(myTree.findMin())
+console.log(myTree.isPresent(6))
 let aTree = new BinaryTree()
-aTree.addMoreNode(100)
-aTree.addMoreNode(50)
-aTree.addMoreNode(150)
-aTree.addMoreNode(60)
-aTree.addMoreNode(140)
-aTree.addMoreNode(160)
-aTree.addMoreNode(40)
-console.log(aTree)
-console.log(aTree.findMax())
-console.log(aTree.findMin())
+// aTree.addMoreNode(100)
+// aTree.addMoreNode(50)
+// aTree.addMoreNode(150)
+// aTree.addMoreNode(60)
+// aTree.addMoreNode(140)
+// aTree.addMoreNode(160)
+// aTree.addMoreNode(40)
+// console.log(aTree)
+// console.log(aTree.findMax())
+// console.log(aTree.findMin())
