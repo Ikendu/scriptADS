@@ -35,6 +35,34 @@ class BinaryTree {
       cheackAdd(this.root)
     }
   }
+
+  //Add node using while(true)
+
+  addMoreNode(value) {
+    if (!this.root) {
+      this.root = new Node(value)
+      return this
+    } else {
+      let temp = this.root
+
+      while (true) {
+        if (value == temp.value) return undefined
+        if (value < temp.value) {
+          if (temp.left == null) {
+            temp.left = new Node(value)
+            return this
+          }
+          temp = temp.left
+        } else {
+          if (temp.right == null) {
+            temp.right = new Node(value)
+            return this
+          }
+          temp = temp.right
+        }
+      }
+    }
+  }
 }
 
 let myTree = new BinaryTree()
@@ -47,3 +75,12 @@ myTree.addNode(35)
 myTree.addNode(55)
 myTree.addNode(50)
 console.log(myTree)
+let aTree = new BinaryTree()
+aTree.addMoreNode(100)
+aTree.addMoreNode(50)
+aTree.addMoreNode(150)
+aTree.addMoreNode(60)
+aTree.addMoreNode(140)
+aTree.addMoreNode(160)
+aTree.addMoreNode(40)
+console.log(aTree)
