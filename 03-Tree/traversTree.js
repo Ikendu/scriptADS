@@ -76,6 +76,7 @@ class BST {
     traverse(this.root)
     return result
   }
+  
   depthFirstInOrder() {
     if (!this.root) return null
 

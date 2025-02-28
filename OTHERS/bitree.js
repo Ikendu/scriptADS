@@ -119,6 +119,47 @@ class BinaryTree {
     }
     this.root = removeNode(this.root, data)
   }
+
+  findMinLength(node = this.root) {
+    if (!node) return -1
+    let left = this.findMinLength(node.left)
+    let right = this.findMinLength(node.right)
+
+    if (left < right) {
+      return left + 1
+    }
+    return right + 1
+  }
+  findMaxLength(node = this.root) {
+    if (!node) return -1
+    let left = this.findMaxLength(node.left)
+    let right = this.findMaxLength(node.right)
+    if (left > right) {
+      return left + 1
+    }
+    return right + 1
+  }
+  isBalance() {
+    return this.findMaxLength() - this.findMinLength() <= 1
+  }
+
+  breathFirst() {
+    if (!this.root) return null
+    let currNode = this.root
+    let queue = []
+    let result = []
+
+    queue.push(currNode)
+    while (queue.length) {
+      currNode = queue.shift()
+      result.push(currNode.value)
+      if (currNode.left) queue.push(currNode.left)
+      if (currNode.right) queue.push(currNode.right)
+    }
+    return result
+  }
+
+  
 }
 
 let myTree = new BinaryTree()
@@ -138,6 +179,10 @@ myTree.addNode(50)
 myTree.remove(50)
 myTree.remove(40)
 console.log(myTree)
+console.log(myTree.findMaxLength())
+console.log(myTree.findMinLength())
+console.log(myTree.breathFirst())
+
 let aTree = new BinaryTree()
 
 // aTree.addMoreNode(100)
@@ -150,3 +195,5 @@ let aTree = new BinaryTree()
 // console.log(aTree)
 // console.log(aTree.findMax())
 // console.log(aTree.findMin())
+
+// console.log(null + 1 + 1)
