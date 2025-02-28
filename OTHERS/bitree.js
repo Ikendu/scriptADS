@@ -65,16 +65,16 @@ class BinaryTree {
   }
   findMax() {
     let temp = this.root
-    while (temp.left) {
-      temp = temp.left
+    while (temp.right) {
+      temp = temp.right
     }
     return temp.value
   }
 
   findMin() {
     let temp = this.root
-    while (temp.right) {
-      temp = temp.right
+    while (temp.left) {
+      temp = temp.left
     }
     return temp.value
   }
@@ -94,7 +94,31 @@ class BinaryTree {
     return false
   }
 
-  
+  remove(data) {
+    function removeNode(node, data) {
+      if (!node) return null
+      if (data == node.data) {
+        if (!node.left && !node.right) return null
+        if (!node.left) return node.right
+        if (!node.right) return node.left
+
+        let tempNode = node.right
+        while (tempNode.left) {
+          tempNode = tempNode.left
+        }
+        node.value = tempNode.value
+        node.right = removeNode(node.right, tempNode.value)
+        return node
+      } else if (data < node.data) {
+        node.left = removeNode(node.left, data)
+        return node
+      } else {
+        node.right = removeNode(node.right, data)
+        return node
+      }
+    }
+    this.root = removeNode(this.root, data)
+  }
 }
 
 let myTree = new BinaryTree()
@@ -106,11 +130,16 @@ myTree.addNode(65)
 myTree.addNode(35)
 myTree.addNode(55)
 myTree.addNode(50)
+// myTree.remove(40)
+
+// console.log(myTree.findMax())
+// console.log(myTree.findMin())
+// console.log(myTree.isPresent(6))
+myTree.remove(50)
+myTree.remove(40)
 console.log(myTree)
-console.log(myTree.findMax())
-console.log(myTree.findMin())
-console.log(myTree.isPresent(6))
 let aTree = new BinaryTree()
+
 // aTree.addMoreNode(100)
 // aTree.addMoreNode(50)
 // aTree.addMoreNode(150)
