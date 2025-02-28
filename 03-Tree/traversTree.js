@@ -76,7 +76,7 @@ class BST {
     traverse(this.root)
     return result
   }
-  
+
   depthFirstInOrder() {
     if (!this.root) return null
 
@@ -88,8 +88,8 @@ class BST {
       result.push(currNode.value)
       if (currNode.right) traverse(currNode.right)
     }
-      traverse(this.root)
-      return result
+    traverse(this.root)
+    return result
   }
 }
 

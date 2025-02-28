@@ -159,7 +159,18 @@ class BinaryTree {
     return result
   }
 
-  
+  inOrder() {
+    if (this.root == null) return null
+    let result = []
+
+    function traverse(node) {
+      node.left && traverse(node.left)
+      result.push(node.value)
+      node.right && traverse(node.right)
+    }
+    traverse(this.root)
+    return result
+  }
 }
 
 let myTree = new BinaryTree()
@@ -182,6 +193,7 @@ console.log(myTree)
 console.log(myTree.findMaxLength())
 console.log(myTree.findMinLength())
 console.log(myTree.breathFirst())
+console.log(myTree.inOrder())
 
 let aTree = new BinaryTree()
 
