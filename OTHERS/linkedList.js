@@ -70,6 +70,7 @@ function LinkedList() {
     if (element == head.value) {
       head = head.next
       temp.next = null
+      length--
       return temp
     }
 
@@ -81,9 +82,41 @@ function LinkedList() {
     if (count < length && temp.value === element) {
       prev.next = temp.next
       temp.next = null
+      length--
       return temp
     }
     return undefined
+  }
+
+  this.shortRemove = function (element) {
+    if (!head) return undefined
+    let curr = head
+    let count = 0
+    let prev
+    if (head.value == element) {
+      head = curr.next
+    } else {
+      while (count < length && element !== curr.value) {
+        prev = curr
+        curr = curr.next
+        count++
+      }
+      if (count < length) prev.next = curr.next
+    }
+    length--
+    return undefined
+  }
+
+  this.elementAt = function (index) {
+    if (index > length || index < 0) return undefined
+    let count = 0
+    let curr = head
+
+    while (count < index) {
+      curr = curr.next
+      count++
+    }
+    return curr.value
   }
 }
 
@@ -93,6 +126,7 @@ myList.addNode(19)
 myList.addNode(10)
 myList.addNode(50)
 myList.insert('Hello', 1)
-console.log(myList.remove(10))
+// console.log(myList.remove(100))
+console.log(myList.elementAt(3))
 console.log(myList.isEmpty())
 console.log(myList.show())
