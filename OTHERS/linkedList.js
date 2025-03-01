@@ -10,6 +10,7 @@ function LinkedList() {
   this.isEmpty = function () {
     return length == 0
   }
+
   this.show = function () {
     let values = []
     while (head) {
@@ -33,7 +34,7 @@ function LinkedList() {
       currNode.next = newNode
     }
     length++
-    return this
+    return true
   }
 
   this.insert = function (element, index) {
@@ -57,6 +58,32 @@ function LinkedList() {
       prev.next = newNode
     }
     length++
+    return true
+  }
+
+  this.remove = function (element) {
+    if (head == null) return undefined
+    let temp = head
+    let prev
+    let count = 0
+
+    if (element == head.value) {
+      head = head.next
+      temp.next = null
+      return temp
+    }
+
+    while (count < length && temp.value !== element) {
+      prev = temp
+      temp = temp.next
+      count++
+    }
+    if (count < length && temp.value === element) {
+      prev.next = temp.next
+      temp.next = null
+      return temp
+    }
+    return undefined
   }
 }
 
@@ -64,6 +91,8 @@ let myList = new LinkedList()
 myList.addNode(9)
 myList.addNode(19)
 myList.addNode(10)
+myList.addNode(50)
 myList.insert('Hello', 1)
+console.log(myList.remove(10))
 console.log(myList.isEmpty())
 console.log(myList.show())
