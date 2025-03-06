@@ -18,4 +18,4 @@ function maxProductSubarry(nums) {
 
 console.log(maxProductSubarry([2, 3, -2, 4]))
 console.log(maxProductSubarry([-2, 0, -1]))
-
+console.log(maxProductSubarry([0]))
