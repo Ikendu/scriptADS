@@ -28,4 +28,17 @@ function climbing1(n) {
   return dfs(n)
 }
 
+function climbing2(n) {
+  let store = new Array(n).fill(0)
+  store[0] = 1
+  store[1] = 1
+
+  for (let i = 2; i < n + 1; i++) {
+    store[i] = store[i - 1] + store[i - 2]
+  }
+
+  return store[n]
+}
+
 console.log(climbing1(10))
+console.log(climbing2(10))
