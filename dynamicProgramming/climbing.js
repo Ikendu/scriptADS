@@ -1,18 +1,18 @@
 // how many ways can you climb N stairs when you can choose to take a step or two steps at a time
 
-// Wrong appraoch ...wrong ans
 function climbing(n) {
-  if (n == 1 || n == 0) return 1
-  if (n <= 3) return 3
+  if (n <= 3) return n
 
-  let num = 3
-  let result = 0
+  let prev1 = 3
+  let prev2 = 2
+  let curr = 0
 
-  while (num <= n) {
-    result += num - 2 + (num - 1)
-    num++
+  for (let i = 3; i < n; i++) {
+    curr = prev1 + prev2
+    prev2 = prev1
+    prev1 = curr
   }
-  return result
+  return curr
 }
 
 console.log(climbing(10))
