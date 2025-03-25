@@ -154,18 +154,32 @@ function twoSum(arr, num) {
 }
 
 // Better Two Sums in one loop
-function twoSums(arr, num) {
-  let obj = {}
+// function twoSums(arr, num) {
+//   let obj = {}
 
-  for (let i = 0; i < arr.length; i++) {
-    let comp = num - arr[i]
-    if (obj[comp]) return [Number(obj[comp]), i]
-    else obj[arr[i]] = i.toString()
+//   for (let i = 0; i < arr.length; i++) {
+//     let comp = num - arr[i]
+//     if (obj[comp]) return [Number(obj[comp]), i]
+//     else obj[arr[i]] = i.toString()
+//   }
+//   return []
+// }
+
+function twoSums(array, sum) {
+  let obj = {}
+  for (let i = 0; i < array.length; i++) {
+    let calc = sum - array[i]
+    if (obj[calc]) {
+      return [Number(obj[calc]), i]
+    } else {
+      obj[array[i]] = i.toString()
+    }
   }
+  console.log(obj)
   return []
 }
-// console.log(twoSums([2, 7, 11, 15], 9))
-// console.log(twoSums([3, 2, 4, 3, 2, 5], 7))
+console.log(twoSums([2, 7, 11, 15], 9))
+console.log(twoSums([3, 2, 4, 3, 2, 5], 7))
 
 // Tow Sum using map function
 function twoSumss(arr, num) {
