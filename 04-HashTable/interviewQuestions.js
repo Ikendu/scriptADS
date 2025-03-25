@@ -196,23 +196,38 @@ function twoSumss(arr, num) {
 // console.log(twoSumss([3, 2, 4, 3, 2, 5], 7))
 
 // Select the starting and ending index for a givien sum
+// function slideSum(arr, num) {
+//   let hash = new Map()
+//   let sum = 0
+
+//   for (let i = 0; i < arr.length; i++) {
+//     sum += arr[i]
+//     let diff = sum - num
+//     if (hash.has(diff)) {
+//       return [hash.get(diff) + 1, i]
+//     } else {
+//       hash.set(sum, i)
+//     }
+//   }
+//   return []
+// }
+
 function slideSum(arr, num) {
-  let hash = new Map()
+  let mymap = new Map()
   let sum = 0
 
   for (let i = 0; i < arr.length; i++) {
     sum += arr[i]
     let diff = sum - num
-    if (hash.has(diff)) {
-      return [hash.get(diff) + 1, i]
+    if (mymap.has(diff)) {
+      return [mymap.get(diff) + 1, i]
     } else {
-      hash.set(sum, i)
+      mymap.set(sum, i)
     }
   }
-  return []
 }
 
-console.log(slideSum([1, 4, 20, 3, 10, 5], 33))
+console.log('first slide', slideSum([1, 4, 20, 3, 10, 5], 33))
 
 console.log(slideSum([2, 5, 1, 5, 7, 20, 3, 15, 10, 3], 45))
 
