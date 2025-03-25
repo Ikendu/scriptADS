@@ -14,7 +14,7 @@ function findDuplicate(arr) {
   return myArr
 }
 
-console.log(findDuplicate([3, 5, 6, 3, 4, 6, 5]))
+console.log(findDuplicate([6, 3, 5, 6, 3, 4, 6, 5]))
 
 // Find duplicate using map [key, value]
 function findMapDup(arr) {
@@ -59,10 +59,11 @@ console.log(findNonRepeating('aasshttk'))
 function nonRepeatMap(str) {
   let myMap = new Map()
   let single = []
+
   for (let char of str) {
     myMap.set(char, (myMap.get(char) || 0) + 1)
   }
-  console.log(myMap)
+  // console.log(myMap)
 
   for (let char of myMap) {
     if (char[1] == 1) single.push(char[0])
@@ -72,22 +73,42 @@ function nonRepeatMap(str) {
 
 console.log(nonRepeatMap('sskkfffyjjsa'))
 
+// function anagramGroup(arr) {
+//   let mymap = new Map()
+
+//   for (let word of arr) {
+//     let sorted = word.split('').sort().join('')
+
+//     if (mymap.has(sorted)) {
+//       mymap.get(sorted).push(word)
+//     } else {
+//       mymap.set(sorted, [word])
+//     }
+//   }
+//   let result = Array.from(mymap.values())
+//   return result
+// }
+
 function anagramGroup(arr) {
   let mymap = new Map()
+  // let result = []
 
-  for (let word of arr) {
-    let sorted = word.split('').sort().join('')
+  for (let i = 0; i < arr.length; i++) {
+    let sorted = arr[i].split('').sort().join('')
 
-    if (mymap.has(sorted)) {
-      mymap.get(sorted).push(word)
+    if (mymap.get(sorted)) {
+      mymap.get(sorted).push(arr[i])
     } else {
-      mymap.set(sorted, [word])
+      mymap.set(sorted, [arr[i]])
     }
   }
+
   let result = Array.from(mymap.values())
   return result
 }
+
 console.log(
+  'NEW ANA',
   anagramGroup(['love', 'vole', 'elvo', 'money', 'nomey', 'car', 'rac', 'arc', 'rich', 'chir'])
 )
 
@@ -114,6 +135,7 @@ console.log(
 )
 
 // Two Sums
+// Return the index of two numbers that will sum up to NUM
 function twoSum(arr, num) {
   let obj = {}
 
@@ -200,5 +222,3 @@ function sliderSum(arr, num) {
 console.log(sliderSum([1, 4, 20, 3, 10, 5], 33))
 
 console.log(sliderSum([2, 5, 1, 5, 7, 20, 3, 15, 10, 3], 45))
-
-
