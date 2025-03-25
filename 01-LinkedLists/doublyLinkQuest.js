@@ -41,6 +41,7 @@ class DoublyLinkedList {
     return this
   }
 
+  // N1000000
   reverseNode() {
     if (!this.head) return null
 

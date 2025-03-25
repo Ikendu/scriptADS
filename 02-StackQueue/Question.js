@@ -60,12 +60,29 @@ function isBalanced(str) {
   }
   console.log(newPar)
   console.log(opo)
-  return newPar.length == opo.length
+  return newPar.length === opo.length
 }
 
 console.log(isBalanced('{{{}}}{}[]{[}]'))
 
-function sortArr(arr) {
+// function sortArr(arr) {
+//   let newArr = []
+
+//   while (arr.length > 0) {
+//     let temp = arr.pop()
+
+//     while (newArr.length > 0 && newArr[newArr.length - 1] > temp) {
+//       arr.push(newArr.pop())
+//     }
+
+//     newArr.push(temp)
+//   }
+
+//   return newArr
+// }
+// console.log(sortArr([5, 1, 3, 4, 0]))
+
+function sortInOrder(arr) {
   let newArr = []
 
   while (arr.length > 0) {
@@ -74,10 +91,8 @@ function sortArr(arr) {
     while (newArr.length > 0 && newArr[newArr.length - 1] > temp) {
       arr.push(newArr.pop())
     }
-
     newArr.push(temp)
   }
-
   return newArr
 }
-console.log(sortArr([5, 1, 3, 4, 0]))
+console.log(sortInOrder([5, 1, 3, 4, 0, 6]))
