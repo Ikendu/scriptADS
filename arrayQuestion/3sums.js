@@ -58,3 +58,28 @@ console.log(threesums([-1, 0, 1, 2, -1, -4]))
 
 // time complexity O(nlogn * n*n) = O(n*n)
 // O(1)
+
+function threesum(nums) {
+  nums = nums.sort()
+  let result = []
+
+  for (let i = 0; i < nums.length; i++) {
+    let l = i + 1
+    let r = nums.length - 1
+
+    while (l < r) {
+      let sum = nums[i] + nums[l] + nums[r]
+
+      if (sum > 0) r--
+      else if (sum < 0) l++
+      else {
+        result.push([nums[i], nums[l], nums[r]])
+        l++
+        while (l < r && nums[l] !== nums[l - 1]) l++
+      }
+    }
+  }
+  return result
+}
+
+console.log(threesum([-1, 0, 1, 2, -1, -4]))
