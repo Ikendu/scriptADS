@@ -1,3 +1,5 @@
+// produce the longest string in an array of strings
+
 function longestString(arr) {
   let longest = ''
 
