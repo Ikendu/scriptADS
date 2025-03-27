@@ -7,8 +7,22 @@ function maxProfit(arr) {
   return sale - buy
 }
 
+function maxProf(nums) {
+  let min = Infinity
+  let maxprof = 0
+
+  for (let num of nums) {
+    min = Math.min(num, min)
+    let prof = num - min
+    maxprof = Math.max(prof, maxprof)
+  }
+  return maxprof
+}
+
+console.log(maxProf([5, 2, 4, 3, 6, 1]))
+
 // console.log(maxProfit([7, 1, 5, 3, 6, 4]))
-// console.log(maxProfit([5, 4, 3, 2, 1]))
+// console.log(maxProfit([5, 2, 4, 3, 6, 1]))
 // console.log(maxProfit([2, 1, 4, 5, 2, 9, 7]))
 // console.log(maxProfit([1, 2, 3, 4, 5]))
 
@@ -24,7 +38,7 @@ function maxProfit2(arr) {
   return maxProfit
 }
 
-console.log(maxProfit2([7, 1, 5, 3, 6, 4]))
-console.log(maxProfit2([5, 4, 3, 2, 1]))
-console.log(maxProfit2([2, 1, 4, 5, 2, 9, 7]))
-console.log(maxProfit2([1, 2, 3, 4, 5]))
+// console.log(maxProfit2([7, 1, 5, 3, 6, 4]))
+// console.log(maxProfit2([5, 4, 3, 2, 1]))
+// console.log(maxProfit2([2, 1, 4, 5, 2, 9, 7]))
+// console.log(maxProfit2([1, 2, 3, 4, 5]))
