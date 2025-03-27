@@ -1,3 +1,8 @@
+// A function that calculate the maximum profit
+// that can be gotten from an array of elements
+// It should produce the max - min
+// The max should be in the future of the min
+
 function maxProfit(arr) {
   let buy = Math.min(...arr)
   let buyIndex = arr.indexOf(buy)
@@ -9,17 +14,17 @@ function maxProfit(arr) {
 
 function maxProf(nums) {
   let min = Infinity
-  let maxprof = 0
+  let result = 0
 
-  for (let num of nums) {
-    min = Math.min(num, min)
-    let prof = num - min
-    maxprof = Math.max(prof, maxprof)
+  for (let cur of nums) {
+    min = Math.min(cur, min)
+    let prof = cur - min
+    result = Math.max(prof, result)
   }
-  return maxprof
+  return result
 }
 
-console.log(maxProf([5, 2, 4, 3, 6, 1]))
+console.log(maxProf([5, 2, 4, 3, 6, 1, 7]))
 
 // console.log(maxProfit([7, 1, 5, 3, 6, 4]))
 // console.log(maxProfit([5, 2, 4, 3, 6, 1]))
