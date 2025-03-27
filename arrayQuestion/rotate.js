@@ -1,3 +1,7 @@
+// rotate the elements to the number of times of k
+// if k is positive, rotate from the back
+// if negative, rotate from the front
+
 function rotata(arr, k) {
   if (k > 0) {
     for (let i = 0; i < k; i++) {

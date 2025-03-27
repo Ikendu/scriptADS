@@ -26,8 +26,7 @@ function nodup(arr) {
 
 console.log(nodup([4, 4, 5, 29, 29, 'hello', 'hello']))
 
-// count the number of duplicate
-
+// count the number of duplicate element and return it
 function nodup1(arr) {
   let myset = new Set(arr)
 
