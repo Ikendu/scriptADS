@@ -1,3 +1,4 @@
+// Binary Tree
 class Node {
   constructor(value) {
     this.value = value
@@ -7,7 +8,7 @@ class Node {
 }
 
 class BinaryTree {
-  constructor() {
+  constructor(value) {
     this.root = null
   }
   addNode(value) {
@@ -94,6 +95,19 @@ class BinaryTree {
     return false
   }
 
+  /**
+   * Removes a node with the specified data from the binary tree.
+   *
+   * @param {*} data - The data of the node to be removed.
+   * @description This method removes a node with the given data from the binary tree.
+   * It handles different cases:
+   * 1. If the node to be removed is a leaf node (no children), it's simply removed.
+   * 2. If the node has only one child, that child replaces the node.
+   * 3. If the node has two children, it finds the minimum value in the right subtree,
+   *    replaces the node's value with this minimum, and then removes the minimum value
+   *    node from the right subtree.
+   * @returns {BinaryTree} The binary tree instance after removal.
+   */
   remove(data) {
     function removeNode(node, data) {
       if (!node) return null
@@ -101,7 +115,9 @@ class BinaryTree {
         if (!node.left && !node.right) return null
         if (!node.left) return node.right
         if (!node.right) return node.left
-
+        // if Node has two children
+        // find the minimum value in the right subtree
+        // replace the node's value with this minimum
         let tempNode = node.right
         while (tempNode.left) {
           tempNode = tempNode.left
