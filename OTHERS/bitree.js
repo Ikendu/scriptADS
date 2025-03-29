@@ -175,6 +175,8 @@ class BinaryTree {
     return result
   }
 
+  // Depth-First Search (DFS)
+  // In-Order Traversal
   inOrder() {
     if (this.root == null) return null
     let result = []
@@ -188,6 +190,7 @@ class BinaryTree {
     return result
   }
 
+  // Post-Order Traversal
   postOrder() {
     if (this.root == null) return null
     let currNode = this.root

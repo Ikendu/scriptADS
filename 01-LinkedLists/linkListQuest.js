@@ -28,6 +28,7 @@ class LinkedList {
     return this
   }
 
+  // Check if a Linked list is a loop
   checkLoop() {
     let fast = this.head
     let slow = this.head
@@ -40,15 +41,24 @@ class LinkedList {
     }
   }
 
+  /**
+   * Finds the nth node from the end of the linked list.
+   * If n is greater than the length of the list, returns null.
+   * @param {number} n - The position from the end of the list.
+   * @returns {any|null} - The value of the nth node from the end, or null if n is invalid.
+   */
   nthFromBack(n) {
     let fast = this.head
     let slow = this.head
     let i = 0
+    // move fast pointer n steps ahead
     while (i < n) {
-      if (fast == null) return false
+      if (fast == null) return null
       fast = fast.next
       i++
     }
+    // move both pointers until fast reaches the end
+    // this way slow will be at the nth node from the end
     while (fast) {
       slow = slow.next
       fast = fast.next

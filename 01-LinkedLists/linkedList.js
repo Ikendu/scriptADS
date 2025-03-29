@@ -98,9 +98,9 @@ class LinkedList {
     if (index == 0) return this.unshift(value)
     if (index == this.length - 1) return this.push(value)
     const newNode = new Node(value)
-    let pos = this.get(index - 1)
-    newNode.next = pos.next
-    pos.next = newNode
+    let posNode = this.get(index - 1)
+    newNode.next = posNode.next
+    posNode.next = newNode
     this.length++
     return true
   }
@@ -122,7 +122,7 @@ class LinkedList {
 
     let temp = this.head
     this.head = this.tail
-    this.tail = curr
+    this.tail = temp
 
     let prev = null
     let next = temp.next
