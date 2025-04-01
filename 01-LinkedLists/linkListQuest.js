@@ -66,6 +66,14 @@ class LinkedList {
     return slow.value
   }
 
+  // all numbers less than num will be in the first list
+  // all numbers greater than num will be in the second list
+  // and the two lists will be connected
+  // e.g. 1 -> 4 -> 3 -> 2 -> 5 -> 2
+  // will be converted to 1 -> 2 -> 2 -> 4 -> 3 -> 5
+  // and the second list will be 4 -> 3 -> 5
+  // and the first list will be 1 -> 2 -> 2
+  // and the two lists will be connected
   partionList(num) {
     if (this.head == null) return
     if (this.head.next == null) return this.head
